@@ -1,0 +1,1110 @@
+import os
+
+html_code = """<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masterclass AI Bisnes &amp; Konten: Cara Pantas Cipta Iklan, Video TikTok &amp; Closing Guna AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --canvas: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-subtle: #F1F5F9;
+      --ink: #0F172A;
+      --ink-muted: #475569;
+      --ink-light: #64748B;
+      --primary: #2563EB;
+      --primary-hover: #1D4ED8;
+      --primary-soft: #EFF6FF;
+      --accent: #059669;
+      --accent-soft: #ECFDF5;
+      --border: #E2E8F0;
+      --border-subtle: #F1F5F9;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--canvas);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+    /* Top Bar */
+    .top-bar {
+      background: #0F172A;
+      color: #F8FAFC;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .top-bar span {
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      margin-right: 8px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 36px;
+      text-align: center;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid #BFDBFE;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 18px;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero p.lead {
+      font-size: 18px;
+      color: var(--ink-muted);
+      max-width: 720px;
+      margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 16px 36px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .cta-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--ink-light);
+      font-weight: 600;
+    }
+    .hero-trust span { display: inline-flex; align-items: center; gap: 5px; }
+    .hero-trust svg { color: var(--accent); }
+
+    .hero-media {
+      margin-top: 36px;
+      position: relative;
+    }
+    .hero-media img {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    /* Section Styling */
+    .section { padding: 48px 0; }
+    .section-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .section-header .tag {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .section-header h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    .section-header p {
+      color: var(--ink-muted);
+      font-size: 16px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Problem / Solution Grid */
+    .problems-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .problem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+    }
+    .problem-card.bad {
+      background: #FFFDFD;
+      border-color: #FEE2E2;
+    }
+    .problem-card.good {
+      border: 2px solid #BFDBFE;
+      background: #FFFFFF;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+    .problem-card.good .card-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .problem-card h3 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .compare-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .compare-list li .icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+    .problem-card.bad .icon { background: #FEE2E2; color: #DC2626; }
+    .problem-card.good .icon { background: var(--accent-soft); color: var(--accent); }
+
+    /* Workflow Matrix */
+    .tools-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .tools-img {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      margin-bottom: 24px;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .tool-item {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      padding: 18px;
+      border-radius: var(--radius-md);
+      text-align: center;
+    }
+    .tool-item h4 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    .tool-item p {
+      font-size: 13px;
+      color: var(--ink-light);
+      line-height: 1.4;
+    }
+
+    /* Modules Syllabus */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .module-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .module-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      background: var(--surface-subtle);
+      color: var(--primary);
+      border: 1px solid #CBD5E1;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .module-card h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    .module-card p {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    /* Bonuses */
+    .bonus-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-sm);
+    }
+    .bonus-img {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      margin-bottom: 28px;
+    }
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .bonus-item {
+      background: #FAFAF9;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .bonus-item-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .bonus-tag {
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 800;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* Testimonials */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .review-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .review-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #DBEAFE;
+      color: #1E40AF;
+      font-weight: 800;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .review-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .review-city {
+      font-size: 12px;
+      color: var(--ink-light);
+    }
+    .review-text {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+    .review-stars {
+      color: #F59E0B;
+      font-size: 13px;
+      margin-top: 14px;
+    }
+
+    /* Checkout Offer Box */
+    .offer-container {
+      background: var(--surface);
+      border: 2px solid #BFDBFE;
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      box-shadow: var(--shadow-lg);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .offer-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .offer-title {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .price-strip {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin: 20px 0;
+    }
+    .old-price {
+      font-size: 18px;
+      color: var(--ink-light);
+      text-decoration: line-through;
+    }
+    .new-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .price-period {
+      font-size: 14px;
+      color: var(--ink-light);
+      font-weight: 600;
+    }
+
+    .package-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 24px 0;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .package-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--ink);
+    }
+    .package-features li svg { color: var(--accent); flex-shrink: 0; }
+
+    /* BCL Form Wrapper */
+    .bcl-embed-shell {
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 10px;
+      margin-top: 24px;
+      min-height: 200px;
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 18px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .faq-answer {
+      padding: 0 24px 20px;
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-light);
+      background: var(--surface);
+      margin-top: 48px;
+    }
+    .footer p { margin-bottom: 8px; }
+
+    /* Sticky Mobile CTA */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--border);
+      padding: 12px 20px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 99;
+    }
+    .sticky-bar .price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .sticky-bar .sub { font-size: 11px; color: var(--ink-light); }
+    .sticky-bar a {
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* Toast */
+    .toast-notice {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      box-shadow: var(--shadow-lg);
+      display: none;
+      align-items: center;
+      gap: 12px;
+      z-index: 98;
+      max-width: 320px;
+      animation: slideIn 0.3s ease;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .toast-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .toast-text {
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+    .toast-text strong { display: block; font-size: 13px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 28px; }
+      .hero p.lead { font-size: 16px; }
+      .problems-grid { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: 1fr 1fr; }
+      .modules-grid { grid-template-columns: 1fr; }
+      .bonus-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .sticky-bar { display: flex; }
+      .toast-notice { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <span>Edisi 2026</span> Masterclass AI Bisnes &amp; Automasi Kandungan untuk Usahawan Malaysia
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="badge-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Sistem Praktikal Pemilik Bisnes Kecil &amp; Content Creator
+      </div>
+      <h1>Cara Pantas Cipta Copywriting Iklan, Video TikTok &amp; Poster Jualan Menggunakan AI</h1>
+      <p class="lead">
+        Kuasai formula prompt ChatGPT bernilai tinggi, hasilkan video CapCut viral tanpa perlu tunjuk muka, dan jimat ribuan ringgit kos staf atau agensi pemasaran setiap bulan.
+      </p>
+      
+      <div>
+        <a href="#bcl-payment-form" class="cta-btn">
+          Dapatkan Akses Masterclass (Hanya RM79)
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-trust">
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> 500+ Template Prompt Sedia Guna</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Video Tutorial Bahasa Melayu</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Akses Portal Seumur Hidup</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Jaminan 30 Hari</span>
+      </div>
+
+      <div class="hero-media">
+        <img src="https://raw.githubusercontent.com/zanobyshop/kelas-ai-malaysia/main/images/ai-hero.jpg" alt="Ruang kerja moden automasi bisnes dan pemasaran digital menggunakan AI">
+      </div>
+    </div>
+  </header>
+
+  <!-- Problem / Solution Section -->
+  <section class="section" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="tag">Cabaran Peniaga</span>
+        <h2>Penat Membazir Masa dan Wang Untuk Pemasaran?</h2>
+        <p>Lihat perbezaan antara cara pemasaran konvensional yang memakan modal besar berbanding sistem automasi AI pintar.</p>
+      </div>
+
+      <div class="problems-grid">
+        <div class="problem-card bad">
+          <h3>
+            <span class="icon">&#10005;</span>
+            Cara Lama (Beban &amp; Lambat)
+          </h3>
+          <ul class="compare-list">
+            <li>
+              <span class="icon">&#10005;</span>
+              <div><strong>Kos Agensi Mahal:</strong> Upah pereka grafik dan copywriter cecah RM1,500 hingga RM3,000 sebulan tapi hasil jualan belum tentu capai sasaran.</div>
+            </li>
+            <li>
+              <span class="icon">&#10005;</span>
+              <div><strong>Buntu Idea Kandungan:</strong> Setiap hari pening kepala fikir apa nak post di TikTok, Facebook, dan Instagram sampai terbengkalai kerja operasi.</div>
+            </li>
+            <li>
+              <span class="icon">&#10005;</span>
+              <div><strong>Malu Tunjuk Muka:</strong> Tahu video pendek sedang viral, tapi rasa segan nak berucap depan kamera dan tiada kemahiran suntingan video.</div>
+            </li>
+            <li>
+              <span class="icon">&#10005;</span>
+              <div><strong>Closing WhatsApp Lambat:</strong> Mesej pelanggan masuk bertimbun tapi lambat balas menyebabkan prospek lari beli dengan pesaing.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="problem-card good">
+          <div class="card-badge">Solusi AI 2026</div>
+          <h3>
+            <span class="icon">&#10003;</span>
+            Sistem Automasi AI Bisnes
+          </h3>
+          <ul class="compare-list">
+            <li>
+              <span class="icon">&#10003;</span>
+              <div><strong>Jimat 90% Kos Pemasaran:</strong> Anda mampu hasilkan copywriting, poster iklan dan video promosi sendiri dalam masa beberapa minit.</div>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span>
+              <div><strong>500+ Prompt Bank:</strong> Tinggal salin dan tampal formula prompt ke dalam ChatGPT untuk dapatkan ayat iklan Bahasa Melayu yang memikat emosi pembeli.</div>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span>
+              <div><strong>Video TikTok Faceless:</strong> Hasilkan video berkualiti tinggi berserta suara latar AI yang lancar tanpa perlu rakam wajah sendiri.</div>
+            </li>
+            <li>
+              <span class="icon">&#10003;</span>
+              <div><strong>Skrip Closing WhatsApp Pantas:</strong> Gunakan skrip AI terbukti untuk jawab persoalan lazim, tangani bantahan harga dan naikkan kadar closing.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 Main Tools Workflow -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="tag">Alat AI Pilihan</span>
+        <h2>4 Tiang Utama Automasi Pemasaran Anda</h2>
+        <p>Kami ajar alat percuma dan berpatutan yang mudah dikuasai dalam beberapa jam sahaja.</p>
+      </div>
+
+      <div class="tools-box">
+        <img class="tools-img" src="https://raw.githubusercontent.com/zanobyshop/kelas-ai-malaysia/main/images/ai-workflow.jpg" alt="Alat kerja kreatif digital dan pemasaran AI">
+
+        <div class="tools-grid">
+          <div class="tool-item">
+            <h4>1. ChatGPT &amp; Claude</h4>
+            <p>Pakar copywriting iklan, emel promosi, artikel SEO dan skrip video.</p>
+          </div>
+          <div class="tool-item">
+            <h4>2. CapCut AI</h4>
+            <p>Jana video TikTok automatik lengkap dengan kapsyen dan suara latar Melayu.</p>
+          </div>
+          <div class="tool-item">
+            <h4>3. Canva Magic AI</h4>
+            <p>Cipta poster jualan, banner promosi dan thumbnail menarik dalam 3 minit.</p>
+          </div>
+          <div class="tool-item">
+            <h4>4. WhatsApp Automation</h4>
+            <p>Skrip pantas dan aliran mesej automatik untuk membalas prospek 24 jam.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules Syllabus -->
+  <section class="section" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="tag">Silibus Kursus</span>
+        <h2>Apa Yang Anda Akan Kuasai Dalam Masterclass Ini?</h2>
+        <p>Modul berpandu video praktikal yang disusun langkah demi langkah tanpa istilah teknikal yang mengelirukan.</p>
+      </div>
+
+      <div class="modules-grid">
+        <div class="module-card">
+          <span class="module-badge">Modul 1</span>
+          <h3>Asas Prompting &amp; 'Otak' AI Bisnes</h3>
+          <p>Cara melatih ChatGPT agar memahami bisnes, produk dan gaya bahasa anda. Elakkan jawapan robotik dan dapatkan ayat iklan Bahasa Melayu yang santai serta menyentuh emosi.</p>
+        </div>
+
+        <div class="module-card">
+          <span class="module-badge">Modul 2</span>
+          <h3>Formula Copywriting Iklan FB &amp; TikTok Ads</h3>
+          <p>Teknik menghasilkan 10 variasi ayat iklan dalam masa 60 saat mengikut formula AIDA dan PAS. Lengkap dengan panduan 'Hook' 3 saat pertama untuk menarik perhatian penonton.</p>
+        </div>
+
+        <div class="module-card">
+          <span class="module-badge">Modul 3</span>
+          <h3>Video TikTok Faceless Guna CapCut AI</h3>
+          <p>Panduan membina video pendek tanpa tunjuk muka. Cara memasukkan suara latar AI yang natural, auto-caption dwibahasa, serta pemilihan video latar (B-roll) yang memukau.</p>
+        </div>
+
+        <div class="module-card">
+          <span class="module-badge">Modul 4</span>
+          <h3>Poster Promosi Pantas Guna Canva AI</h3>
+          <p>Teknik menggunakan ciri Magic Studio Canva untuk menghasilkan poster promosi produk, banner diskaun, dan katalog media sosial yang kelihatan seperti rekaan agensi profesional.</p>
+        </div>
+
+        <div class="module-card">
+          <span class="module-badge">Modul 5</span>
+          <h3>Skrip Closing &amp; Automasi WhatsApp</h3>
+          <p>Menghasilkan skrip pantas untuk mengendalikan soalan prospek berkaitan harga, cara bayaran dan jaminan kualiti. Tingkatkan kadar pertukaran daripada klik ke jualan sebenar.</p>
+        </div>
+
+        <div class="module-card">
+          <span class="module-badge">Modul 6</span>
+          <h3>Blueprint Kalendar Kandungan 30 Hari</h3>
+          <p>Sistem merancang dan menghasilkan 30 idea kandungan media sosial untuk sebulan dalam masa hanya 2 jam. Membina jadual siaran konsisten tanpa perlu stres setiap pagi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bonuses Section -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="tag">Nilai Tambahan Percuma</span>
+        <h2>4 Bonus Istimewa Untuk Mempercepatkan Hasil Anda</h2>
+        <p>Dapatkan koleksi bahan sedia guna yang boleh anda salin dan laksanakan serta-merta ke dalam perniagaan anda.</p>
+      </div>
+
+      <div class="bonus-box">
+        <img class="bonus-img" src="https://raw.githubusercontent.com/zanobyshop/kelas-ai-malaysia/main/images/ai-bundle.jpg" alt="Pakej bundle panduan AI bisnes berserta koleksi prompt sedia guna">
+
+        <div class="bonus-grid">
+          <div class="bonus-item">
+            <div class="bonus-item-title">The 500+ Malaysian Business Prompt Vault (Salin &amp; Tampal)</div>
+            <span class="bonus-tag">Nilai RM 149</span>
+          </div>
+          <div class="bonus-item">
+            <div class="bonus-item-title">50+ Template Hook &amp; Skrip Video CapCut AI Viral</div>
+            <span class="bonus-tag">Nilai RM 99</span>
+          </div>
+          <div class="bonus-item">
+            <div class="bonus-item-title">Spreadsheet Kalendar Kandungan 30 Hari Automatik</div>
+            <span class="bonus-tag">Nilai RM 69</span>
+          </div>
+          <div class="bonus-item">
+            <div class="bonus-item-title">Akses Komuniti WhatsApp VIP Alumni AI Bisnes Malaysia</div>
+            <span class="bonus-tag">Nilai RM 199</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="tag">Kisah Kejayaan Peserta</span>
+        <h2>Hasil Praktikal Peniaga Yang Menggunakan AI</h2>
+        <p>Maklum balas jujur usahawan tempatan yang telah mengautomasi pemasaran mereka.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div>
+            <div class="review-header">
+              <div class="review-avatar">HA</div>
+              <div>
+                <div class="review-name">Hafizuddin Ariffin</div>
+                <div class="review-city">Shah Alam, Selangor</div>
+              </div>
+            </div>
+            <p class="review-text">
+              "Sebelum ni sebulan belanja RM1,800 upah part-time designer dan copywriter. Lepas belajar modul ChatGPT dan Canva AI, saya boleh buat sendiri poster promosi dan copywriting iklan dalam masa 15 minit sahaja. Jimat besar belanja bulanan."
+            </p>
+          </div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="review-header">
+              <div class="review-avatar" style="background: #FCE7F3; color: #9D174D;">NR</div>
+              <div>
+                <div class="review-name">Nurul Ridzuan</div>
+                <div class="review-city">Bangi, Selangor</div>
+              </div>
+            </div>
+            <p class="review-text">
+              "Paling suka teknik video TikTok faceless tu. Saya jenis pemalu nak bercakap depan kamera. Guna formula skrip CapCut AI dalam modul 3, video pertama saya dapat cecah 80,000 tontonan dan bawa masuk berpuluh order baru."
+            </p>
+          </div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="review-header">
+              <div class="review-avatar" style="background: #DCFCE7; color: #166534;">FK</div>
+              <div>
+                <div class="review-name">Farhan Kamal</div>
+                <div class="review-city">Kuantan, Pahang</div>
+              </div>
+            </div>
+            <p class="review-text">
+              "Prompt vault 500+ tu memang emas. Tak perlu pening fikir nak taip apa dekat ChatGPT. Copy paste prompt, masukkan nama produk saya, terus keluar ayat iklan yang menusuk emosi prospek. Sangat berbaloi yuran RM79 ni."
+            </p>
+          </div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout Box with BCL Integration -->
+  <section class="section" style="padding-top: 10px;">
+    <div class="wrap">
+      <div class="offer-container" id="tempah">
+        <div style="text-align: center;">
+          <span class="offer-badge">Tawaran Khas Pelancaran</span>
+          <h2 class="offer-title">Daftar Masterclass &amp; Dapatkan Pakej Lengkap Hari Ini</h2>
+          <p style="color: var(--ink-muted); font-size: 15px;">Daftar sekarang untuk menerima akses serta-merta ke semua video tutorial dan bahan muat turun.</p>
+
+          <div class="price-strip" style="justify-content: center;">
+            <span class="old-price">RM 199</span>
+            <span class="new-price">RM 79</span>
+            <span class="price-period">/ bayaran sekali sahaja</span>
+          </div>
+        </div>
+
+        <ul class="package-features">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            6 Modul Video Tutorial Praktikal (Prompting, Copywriting, Video &amp; Poster)
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            The 500+ Malaysian Business Prompt Vault (Bernilai RM149)
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            50+ Template Hook &amp; Skrip Video CapCut AI Viral (Bernilai RM99)
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Spreadsheet Kalendar Kandungan 30 Hari Automatik (Bernilai RM69)
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Akses Sepanjang Hayat Melalui Portal Pembelajaran Online
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            30 Hari Jaminan Kepuasan (Pulangan Wang 100%)
+          </li>
+        </ul>
+
+        <!-- BCL Form Embed Container -->
+        <div class="bcl-embed-shell">
+          <div id="bcl-payment-form" data-url="https://zanobyshop.bcl.my/embed/form/kelas-ai-bisnes"></div>
+          <script src="https://bcl.my/js/bc-encrypted-payment-embed.js"></script>
+        </div>
+
+        <div style="text-align: center; margin-top: 18px; font-size: 13px; color: var(--ink-light); display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <span>&#128274; Pembayaran Selamat melalui FPX &amp; DuitNow QR</span>
+          <span>&#9889; Akses Dihantar Terus ke Emel Selepas Bayaran</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-header">
+        <span class="tag">Soalan Lazim</span>
+        <h2>Pertanyaan Kerap Ditanya</h2>
+        <p>Ketahui maklumat lanjut sebelum anda memulakan pendaftaran kelas.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Adakah saya perlu melanggan ChatGPT berbayar untuk amalkan modul ini?
+            <span style="font-size: 18px;">+</span>
+          </div>
+          <div class="faq-answer">
+            Tidak perlu. Semua teknik prompt dan formula yang kami kongsikan boleh dipraktikkan menggunakan versi percuma ChatGPT, Claude, dan CapCut. Versi percuma sudah lebih daripada mencukupi untuk menjana hasil yang cemerlang.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Saya tidak mahir teknologi atau IT. Adakah saya boleh faham?
+            <span style="font-size: 18px;">+</span>
+          </div>
+          <div class="faq-answer">
+            Ya, sangat mudah. Kelas ini direka khas untuk orang biasa. Anda tidak perlu tahu koding atau teknikal rumit. Jika anda pandai menaip mesej di WhatsApp, anda sudah cukup layak untuk menggunakan semua alat AI ini.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Bagaimanakah saya akan menerima akses kelas selepas pembayaran dibuat?
+            <span style="font-size: 18px;">+</span>
+          </div>
+          <div class="faq-answer">
+            Sebaik sahaja pembayaran melalui FPX atau DuitNow QR berjaya disahkan di BCL, pautan portal pembelajaran dan fail muat turun 500+ prompt vault akan dihantar secara automatik ke alamat emel anda dalam masa beberapa minit.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            Bolehkah saya menonton semula video jika terlupa langkah-langkahnya?
+            <span style="font-size: 18px;">+</span>
+          </div>
+          <div class="faq-answer">
+            Boleh, akses portal pembelajaran adalah seumur hidup. Anda boleh log masuk dan menonton semula video tutorial bila-bila masa mengikut kelapangan anda melalui telefon pintar atau komputer.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap">
+      <p><strong>Zanoby Shop</strong> &copy; 2026. Hak Cipta Terpelihara.</p>
+      <p style="font-size: 12px; color: var(--ink-light); max-width: 600px; margin: 0 auto;">
+        Penafian: Laman web ini tidak bergabung atau ditaja oleh OpenAI, Meta, atau TikTok. Segala kejayaan hasil bergantung kepada komitmen dan pelaksanaan strategi individu.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Sticky Bottom Bar for Mobile -->
+  <div class="sticky-bar">
+    <div>
+      <div class="price">RM 79</div>
+      <div class="sub">Akses Seumur Hidup</div>
+    </div>
+    <a href="#bcl-payment-form">Daftar Sekarang</a>
+  </div>
+
+  <!-- Real Buyer Notification Toast -->
+  <div id="saleToast" class="toast-notice">
+    <div class="toast-icon">&#10003;</div>
+    <div class="toast-text">
+      <strong id="toastName">Hafiz dari Shah Alam</strong>
+      baru sahaja menyertai Masterclass AI
+    </div>
+  </div>
+
+  <script>
+    // FAQ Toggle
+    function toggleFaq(el) {
+      const answer = el.nextElementSibling;
+      const icon = el.querySelector('span');
+      if (answer.style.display === 'block') {
+        answer.style.display = 'none';
+        icon.textContent = '+';
+      } else {
+        answer.style.display = 'block';
+        icon.textContent = '−';
+      }
+    }
+
+    // Buyer Notification Toast
+    const recentBuyers = [
+      "Hafiz dari Shah Alam",
+      "Farah dari Petaling Jaya",
+      "Syed dari Johor Bahru",
+      "Amirul dari Kuantan",
+      "Nabila dari Bangi"
+    ];
+    let toastIndex = 0;
+    function showNextToast() {
+      const toast = document.getElementById('saleToast');
+      if (!toast) return;
+      document.getElementById('toastName').textContent = recentBuyers[toastIndex];
+      toast.style.display = 'flex';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 4000);
+      toastIndex = (toastIndex + 1) % recentBuyers.length;
+    }
+    setTimeout(() => {
+      showNextToast();
+      setInterval(showNextToast, 14000);
+    }, 4000);
+  </script>
+</body>
+</html>
+"""
+
+with open('/Users/olanmirza/Projects/kelas-ai-malaysia/bcl-template.html', 'w', encoding='utf-8') as f:
+    f.write(html_code)
+
+with open('/Users/olanmirza/Projects/kelas-ai-malaysia/index.html', 'w', encoding='utf-8') as f:
+    f.write(html_code)
+
+with open('/Users/olanmirza/Downloads/kelas-ai-template.html', 'w', encoding='utf-8') as f:
+    f.write(html_code)
+
+print('Generated AI Class template!')
